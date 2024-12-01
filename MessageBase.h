@@ -1,6 +1,7 @@
 #pragma once
 #include <stdlib.h>     /* malloc, free */
 #include "ChatMessage.h"
+#include "ChatUser.h"
 
 
 class MessageBase
@@ -20,6 +21,10 @@ public:
     bool AddMsg(ChatMessage chatmsg);
     
     ChatMessage GetMsg(unsigned short msgindex);
+
+    void PrintAll();
+
+    bool FindUserMsg(ChatUser* chatuser, MessageBase* dmb);
 
 
 };

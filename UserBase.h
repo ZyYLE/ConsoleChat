@@ -19,19 +19,19 @@ class UserBase
         UserBase(unsigned short userbasesize);
         
         virtual ~UserBase();
-        
-        //void Init();
-        //bool Resize(unsigned short newsize);
-        
-        bool AddUser(ChatUser chatuser);
+             
+        bool AddUser(ChatUser* chatuser);
         
         //bool DelUser(ChatUser chatuser);
 
         //ChatUser&  GetUserList();
 
-        bool CheckNick(std::string nickname);
+        bool CheckNick(ChatUser* chatuser); //проверка свободен ли логин при регистрации
 
-        // еще нужно как-то забирать юзера чтобы пописать его в сообщении?? 
+        // еще нужно как-то забирать юзера чтобы прописать его в сообщении?? 
         void ListUsers();
+
+        bool CheckLogin(ChatUser* chatuser); // проверка совпадения логина и пароля при входе
+
 };
 

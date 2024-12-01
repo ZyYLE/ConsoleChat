@@ -30,6 +30,9 @@
     <ClCompile Include="MessageBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ChatDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChatUser.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MessageBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChatDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

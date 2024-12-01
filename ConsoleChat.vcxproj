@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChatDisplay.cpp" />
     <ClCompile Include="ChatMessage.cpp" />
     <ClCompile Include="ChatUser.cpp" />
     <ClCompile Include="ConsoleChat.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="UserBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChatDisplay.h" />
     <ClInclude Include="ChatMessage.h" />
     <ClInclude Include="ChatUser.h" />
     <ClInclude Include="MessageBase.h" />

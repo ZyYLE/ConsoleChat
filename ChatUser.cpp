@@ -1,9 +1,10 @@
 #include "ChatUser.h"
 
-ChatUser::ChatUser(std::string n, std::string p, unsigned short ui, unsigned short um)
+ChatUser::ChatUser(std::string n, std::string p, std::string fn, unsigned short ui, unsigned short um)
 {
 	_username = n;
 	_userpass = p;
+	_userfullname = fn;
 	_userid = ui;
 	_usermode = um;
 }
@@ -47,6 +48,16 @@ std::string ChatUser::GetUserpass()
 	return _userpass;
 }
 
+void ChatUser::SetUserfullname(std::string s)
+{
+	_userfullname = s;
+}
+
+std::string ChatUser::GetUserfullname()
+{
+	return _userfullname;
+}
+
 void ChatUser::SetUserID(unsigned short id)
 {
 	_userid = id;
@@ -71,6 +82,7 @@ void ChatUser::InitChatUser()
 {
 	_username = " ";
 	_userpass = " ";
+	_userfullname = " ";
 }
 
 

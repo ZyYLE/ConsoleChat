@@ -1,5 +1,7 @@
 #include "MessageBase.h"
 
+
+
 MessageBase::MessageBase(unsigned short msgbasesize)
 {
 	_msgbasesize=msgbasesize;
@@ -59,5 +61,30 @@ ChatMessage MessageBase::GetMsg(unsigned short msgindex)
 {
 	return _startmsgPtr[msgindex];
 }
+
+void MessageBase::PrintAll()
+{
+	for (int ix = 0; ix < _totalmsgs; ix++)
+	{
+		_startmsgPtr[ix].PrintMsg();
+	}
+}
+
+bool MessageBase::FindUserMsg(ChatUser* chatuser, MessageBase* dmb)
+{
+	bool found=0;
+
+	for (int ix = 0; ix < _totalmsgs; ix++)
+	{
+		if ((_startmsgPtr[ix].GetReciever() == chatuser->GetUserID())||(_startmsgPtr[ix].GetReciever() == 0))
+		{
+			dmb->AddMsg(_startmsgPtr[ix]);
+			found = 1;
+		}
+	}
+
+	return found;
+}
+
 
 
