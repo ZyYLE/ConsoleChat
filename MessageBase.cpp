@@ -26,6 +26,7 @@ bool MessageBase::AddMsg(ChatMessage chatmsg)
 	if (_totalmsgs < _msgbasesize)
 	{
 		_startmsgPtr[_totalmsgs] = chatmsg;
+		
 		_totalmsgs++;
 		
 	}

@@ -17,6 +17,7 @@ unsigned short ChatDisplay::LoginMenu()
 		std::cout << "Выберите действие:" << std::endl;
 		std::cout << "1. Ввести логин и пароль" << std::endl;
 		std::cout << "2. Зарегистрироваться" << std::endl;
+		std::cout << "3. Выход" << std::endl;
 		std::cout << "Ввеедите номер:" << std::endl;
 		std::cin >> uc;
 		std::cin.sync();
@@ -30,6 +31,12 @@ unsigned short ChatDisplay::LoginMenu()
 		if (uc == '2')
 		{
 			userchoice = 2;
+			menudone = 1;
+		}
+		
+		if (uc == '3')
+		{
+			userchoice = 3;
 			menudone = 1;
 		}
 	

@@ -39,19 +39,20 @@ int main()
 	std::string ms; //message
 
 	bool userlogged = 0;
+	bool exitselected = 0;
 	
 	ChatDisplay  chatdisplay1; // класс где живут все диалоги
 	
-	while (true)
+	while (!exitselected)
 	{
 
 
 
 		bool logoffselected = 0;
-		while (!logoffselected)
+		while ((!logoffselected) && (!exitselected))
 		{
 
-			while (!userlogged)
+			while ((!userlogged) && (!exitselected))
 			{
 				chatdisplay1.ShowWelcome();
 
@@ -112,75 +113,83 @@ int main()
 
 
 				};
-
-
-
-			}
-
-			// в этой точке есть залогиненый юзер ct1
-			// здесь нужно меню сенд-ресив и логоф
-			unsigned short sendrecievelogoff = chatdisplay1.SendRecieveLogoff();
-					
-			if (sendrecievelogoff == 3) // выбран логоф
-			{
-				logoffselected = 1;
-				userlogged = 0;
-			}
-
-			if (sendrecievelogoff == 1) // выбран Отправка сообщения
-			{
-				// отправка сообщения
-				ub1.ListUsers();
-				
-				unsigned short sendmenuresult = 0;
-				bool correctuser = 0;
-
-				while (!sendmenuresult)
+				if (loginmenuresult == 3) // выбрали выход
 				{
-					sendmenuresult = chatdisplay1.SendMenu(&ls, &ms);
+					exitselected = 1;
 
-					//проверяем есть ли юзер 
-					ct2.SetUsername(ls);
-					ct2.SetUserID(0); //если получатель найдется, то id  перепишется из получателя
-										
-					if ((!(ub1.CheckNick(&ct2)))&&(ls!="*"))  //если юзера с ником нет и ник не *, то спрашиваем о повторе
-					{
 
-						if (chatdisplay1.RetryMenu()) sendmenuresult =0;
-						
-					}
-					else
-					{
-						correctuser = 1;
-					}
+				};
+
+
+
+			}
+
+			if (!exitselected)
+			{
+				// в этой точке есть залогиненый юзер ct1
+				// здесь нужно меню сенд-ресив и логоф
+				unsigned short sendrecievelogoff = chatdisplay1.SendRecieveLogoff();
+
+				if (sendrecievelogoff == 3) // выбран логоф
+				{
+					logoffselected = 1;
+					userlogged = 0;
 				}
 
-				// если correctuser то можно отправлять. в ct2 лежит адресат либо адресаты все. 
+				if (sendrecievelogoff == 1) // выбран Отправка сообщения
+				{
+					// отправка сообщения
+					ub1.ListUsers();
 
-				//формируем сообщение 
-				ChatMessage ctm(ms, " ", 0, ct1.GetUserID(), ct2.GetUserID());
-				
-				//добавляем сообщение в базу сообщений
-				mb1.AddMsg(ctm);
-				ctm.PrintMsg();
+					unsigned short sendmenuresult = 0;
+					bool correctuser = 0;
+
+					while (!sendmenuresult)
+					{
+						sendmenuresult = chatdisplay1.SendMenu(&ls, &ms);
+
+						//проверяем есть ли юзер 
+						ct2.SetUsername(ls);
+						ct2.SetUserID(0); //если получатель найдется, то id  перепишется из получателя
+
+						if ((!(ub1.CheckNick(&ct2))) && (ls != "*"))  //если юзера с ником нет и ник не *, то спрашиваем о повторе
+						{
+
+							if (chatdisplay1.RetryMenu()) sendmenuresult = 0;
+
+						}
+						else
+						{
+							correctuser = 1;
+						}
+					}
+
+					// если correctuser то можно отправлять. в ct2 лежит адресат либо адресаты все. 
+
+					//формируем сообщение 
+					ChatMessage ctm(ms, " ", 0, ct1.GetUserID(), ct2.GetUserID());
+
+					//добавляем сообщение в базу сообщений
+					mb1.AddMsg(ctm);
+					ctm.PrintMsg();
+
+				}
+
+				if (sendrecievelogoff == 2) // выбран Получение  сообщений
+				{
+					// Получение  сообщений
+					mb1.PrintAll(); //отладка - печать всех сообщений
+					std::cout << "Теперь нужные:" << std::endl;
+
+					MessageBase mb2(5); // временная база для принятия сообщений текущего юзера
+					mb1.FindUserMsg(&ct1, &mb2);
+					mb2.PrintAll();
+
+				}
+
 
 			}
-
-			if (sendrecievelogoff == 2) // выбран Получение  сообщений
-			{
-				// Получение  сообщений
-				mb1.PrintAll(); //отладка - печать всех сообщений
-				std::cout << "Теперь нужные:" << std::endl;
-
-				MessageBase mb2(5); // временная база для принятия сообщений текущего юзера
-				mb1.FindUserMsg(&ct1, &mb2);
-				mb2.PrintAll();
-
-			}
-
-
 		}
-
 	}
 
 	ub1.ListUsers();

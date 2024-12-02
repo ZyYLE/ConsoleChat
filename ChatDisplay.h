@@ -5,8 +5,8 @@
 class ChatDisplay
 {
 	protected:
-		unsigned short _loggeduserid;
-		std::string _loggedusernick;
+		//unsigned short _loggeduserid;
+		//std::string _loggedusernick;
 
 	public:
 		void ShowWelcome();
@@ -18,6 +18,6 @@ class ChatDisplay
 		unsigned short SendRecieveLogoff();
 		unsigned short SendMenu(std::string* reciever, std::string* msgbody);
 
-		unsigned short RecieveMenu();
+		//unsigned short RecieveMenu();
 };
 

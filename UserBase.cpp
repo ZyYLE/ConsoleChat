@@ -40,7 +40,9 @@ bool UserBase::AddUser(ChatUser* chatuser)
 
 		void* tmpptr;
 
-		tmpptr = realloc((void*)_startuserPtr, (_userbasesize * sizeof(ChatUser)));
+		
+			tmpptr = realloc((void*)_startuserPtr, (_userbasesize * sizeof(ChatUser)));
+		;
 
 		if (tmpptr == nullptr)
 		{
@@ -72,6 +74,8 @@ bool UserBase::AddUser(ChatUser* chatuser)
 	};
 
 	(*chatuser) = _startuserPtr[_totalusers - 1]; //передаем с заполненным ID  обратно
+
+	
 
 	return true;
 

@@ -20,16 +20,11 @@ class UserBase
         
         virtual ~UserBase();
              
-        bool AddUser(ChatUser* chatuser);
+        bool AddUser(ChatUser* chatuser);// добавление юзера в базу
         
-        //bool DelUser(ChatUser chatuser);
-
-        //ChatUser&  GetUserList();
-
         bool CheckNick(ChatUser* chatuser); //проверка свободен ли логин при регистрации
-
-        // еще нужно как-то забирать юзера чтобы прописать его в сообщении?? 
-        void ListUsers();
+        
+        void ListUsers();// выводсписка юзеров
 
         bool CheckLogin(ChatUser* chatuser); // проверка совпадения логина и пароля при входе
 

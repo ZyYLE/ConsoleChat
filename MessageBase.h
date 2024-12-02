@@ -14,17 +14,17 @@ protected:
 
 public:
 
-    MessageBase(unsigned short msgbasesize);
+    MessageBase(unsigned short msgbasesize); //создание базы нужного размера
 
     virtual ~MessageBase();
 
-    bool AddMsg(ChatMessage chatmsg);
+    bool AddMsg(ChatMessage chatmsg); // добавление сообщения в базу
     
-    ChatMessage GetMsg(unsigned short msgindex);
+    ChatMessage GetMsg(unsigned short msgindex); // отлажочная. распечатка сообщения по номеру 
 
-    void PrintAll();
+    void PrintAll(); // распечатка всех сообщений
 
-    bool FindUserMsg(ChatUser* chatuser, MessageBase* dmb);
+    bool FindUserMsg(ChatUser* chatuser, MessageBase* dmb); // выборка сообщений для конкретного юзера
 
 
 };
